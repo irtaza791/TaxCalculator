@@ -10,17 +10,16 @@ import Axios from 'axios'
 import { TextField } from '@material-ui/core';
 import { Container } from '@material-ui/core';
 import { Navigate } from 'react-router-dom';
-const Calculator = () => {
+const Germany = () => {
   let navigate = useNavigate();
   const [relation, setRelation] = useState("")
   const [income, setIncome] = useState("")
-  const [taxCredit, setTaxCredit] = useState("");
   const [year, setYear] = useState("");
   const [taxResults, setTaxResults] = useState(null);
-  const [expenses, setExpenses] = useState("")
+
   useEffect(() => {
-    console.log(relation + income + year + taxCredit + expenses)
-  }, [relation, income, year, taxCredit, expenses])
+    console.log(relation + income + year )
+  }, [relation, income, year])
   const todo = () => {
     submitPost();
     
@@ -30,9 +29,7 @@ const Calculator = () => {
       "income": income,
       "relation": relation,
       "year": year,
-      "expenses": expenses,
-      "taxCredit": "800",
-      "calculatorCountry":"Portugal",
+      "calculatorCountry":"Germany",
     });
 
 
@@ -61,7 +58,7 @@ const Calculator = () => {
     <div className='body'>
       <div className='container'>
           <div className='uploadPost'>
-            <h4 className='rs'>Relationship Status</h4>
+            <h4>Relationship Status</h4>
             <div class="form__group">
             <input type="Radio" name='relation' value='Married' onChange={(e) => {
               setRelation(e.target.value);
@@ -85,8 +82,6 @@ const Calculator = () => {
             }}
             />
             </div>
-         
-            
             <br />
             <div class="form__group">
             <label>Select Year</label>
@@ -96,26 +91,10 @@ const Calculator = () => {
             }} />
             </div>
             <br />
-            <div class="form__group">
-            <label>Tax Credit</label>
-            <br />
-            <input type="number" value="800" />
-            <br />
-            </div>
-            <div class="form__group">
-            <label>Deductable Expenses</label>
-            <br />
-            <input placeholder="Your Email" type="text" onChange={(e) => {
-              setExpenses(e.target.value);
-            }}
-            />
-            </div>
-
-
-            <br />
             
-            <button className='button-84' onClick={todo} >Submit Post</button>
-            <br />  
+            <br />
+            <button onClick={todo} >Submit Post</button>
+            <br />
           </div>
 
         
@@ -128,4 +107,4 @@ const Calculator = () => {
   )
 }
 
-export default Calculator
+export default Germany

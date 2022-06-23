@@ -1,44 +1,34 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react'
 import { useEffect } from 'react';
-
-import '../pages/calculator.css';
 import { useNavigate } from 'react-router-dom'
+import '../pages/calculator.css';
 import Axios from 'axios'
 //import { Typography } from '@material-ui/core';
 //import { Button } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import { Container } from '@material-ui/core';
-import { Navigate } from 'react-router-dom';
-const Calculator = () => {
+const NewZealand = () => {
   let navigate = useNavigate();
-  const [relation, setRelation] = useState("")
+  const [payPeriod, setpayPeriod] = useState("")
   const [income, setIncome] = useState("")
   const [taxCredit, setTaxCredit] = useState("");
   const [year, setYear] = useState("");
   const [taxResults, setTaxResults] = useState(null);
   const [expenses, setExpenses] = useState("")
-  useEffect(() => {
-    console.log(relation + income + year + taxCredit + expenses)
-  }, [relation, income, year, taxCredit, expenses])
-  const todo = () => {
-    submitPost();
-    
-  }
+
   const submitPost = () => {
     var data = JSON.stringify({
       "income": income,
-      "relation": relation,
+      "payPeriod": payPeriod,
       "year": year,
       "expenses": expenses,
-      "taxCredit": "800",
-      "calculatorCountry":"Portugal",
+      "taxCredit": taxCredit,
+      "calculatorCountry":"NewZealand",
     });
-
 
     var config = {
       method: 'post',
-      url: 'http://localhost:3001/api/portugal',
+      url: 'http://localhost:3001/api/nz',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -47,10 +37,9 @@ const Calculator = () => {
 
     Axios(config)
       .then(function (response) {
-        // console.log((response.data));
+        //console.log((response.data));
         setTaxResults((response.data));
-        //navigate("/result");
-        navigate('/result',{state: {response:response.data,request:JSON.parse(data)}}); 
+        navigate('/result',{state: {response:response.data,request:JSON.parse(data)}});
       })
       .catch(function (error) {
         console.log(error);
@@ -61,20 +50,20 @@ const Calculator = () => {
     <div className='body'>
       <div className='container'>
           <div className='uploadPost'>
-            <h4 className='rs'>Relationship Status</h4>
+            <h4>Pay Period</h4>
             <div class="form__group">
-            <input type="Radio" name='relation' value='Married' onChange={(e) => {
-              setRelation(e.target.value);
+            <input type="Radio" name='payPeriod' value='Yearly' onChange={(e) => {
+              setpayPeriod(e.target.value);
             }}
             />
-            <label>Married</label>
+            <label>Yearly</label>
             </div>
             <div class="form__group">
-            <input type="Radio" name='relation' value='Single' onChange={(e) => {
-              setRelation(e.target.value);
+            <input type="Radio" name='payPeriod' value='Monthly' onChange={(e) => {
+              setpayPeriod(e.target.value);
             }}
             />
-            <label>Single</label>
+            <label>Monthly</label>
             </div>
             <br />
             <div class="form__group">
@@ -91,7 +80,7 @@ const Calculator = () => {
             <div class="form__group">
             <label>Select Year</label>
             <br />
-            <input type="number" min="2019" max="2022" step="1" placeholder='2019' onChange={(e) => {
+            <input type="number" min="2019" max="2023" step="1" placeholder='2019' onChange={(e) => {
               setYear(e.target.value);
             }} />
             </div>
@@ -99,7 +88,10 @@ const Calculator = () => {
             <div class="form__group">
             <label>Tax Credit</label>
             <br />
-            <input type="number" value="800" />
+            <input type="number" onChange={(e) => {
+              setTaxCredit(e.target.value);
+            }}
+            />
             <br />
             </div>
             <div class="form__group">
@@ -113,9 +105,12 @@ const Calculator = () => {
 
 
             <br />
+            <button onClick={submitPost} >Submit Post</button>
+            <br />
             
-            <button className='button-84' onClick={todo} >Submit Post</button>
-            <br />  
+            
+
+
           </div>
 
         
@@ -128,4 +123,4 @@ const Calculator = () => {
   )
 }
 
-export default Calculator
+export default NewZealand
