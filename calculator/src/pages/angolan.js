@@ -20,9 +20,9 @@ const Germany = () => {
   useEffect(() => {
     console.log(relation + income + year )
   }, [relation, income, year])
-  const todo = () =>{
-    navigate('/');
-
+  const todo = () => {
+    submitPost();
+    
   }
   const submitPost = () => {
     var data = JSON.stringify({
@@ -35,7 +35,7 @@ const Germany = () => {
 
     var config = {
       method: 'post',
-      url: 'http://localhost:3001/api/germany',
+      url: 'http://localhost:3001/api/portugal',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -58,7 +58,7 @@ const Germany = () => {
     <div className='body'>
       <div className='container'>
           <div className='uploadPost'>
-            <h4 className='rs' >Relationship Status</h4>
+            <h4>Relationship Status</h4>
             <div class="form__group">
             <input type="Radio" name='relation' value='Married' onChange={(e) => {
               setRelation(e.target.value);
@@ -93,8 +93,7 @@ const Germany = () => {
             <br />
             
             <br />
-            <button className='button-84' onClick={submitPost} >Calculate</button>
-            <button  className='button-83'  onClick={todo} >return</button>
+            <button onClick={todo} >Submit Post</button>
             <br />
           </div>
 

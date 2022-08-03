@@ -6,7 +6,8 @@ import newzealand from '../photos/newzealand.jpg'
 import germany from '../photos/germany.png'
 import france from '../photos/france.png'
 import canada from '../photos/canada.png'
-
+import usa from '../photos/usa.png'
+import kenya from '../photos/Kenya.png'
 import Roll from 'react-reveal/Roll';
 const Country = () => {
     const [scale, setScale] = React.useState(false);
@@ -47,7 +48,7 @@ const Country = () => {
                     </Roll>
                     <Roll left>
                         <div className='gridItem' onClick={() => {
-                            navigate("/portugal")
+                            navigate("/france")
                         }}>
                             <p className='imgText'>France</p>
                             <img className='imgfrance' src={france} />
@@ -56,7 +57,7 @@ const Country = () => {
                     </Roll>
                     <Roll left>
                         <div className='gridItem' onClick={() => {
-                            navigate("/portugal")
+                            navigate("/canada")
                         }}>
                             <p className='imgText'>Canada</p>
                             <img className='imgcanada' src={canada} />
@@ -65,18 +66,36 @@ const Country = () => {
                     </Roll>
                     <Roll left>
                         <div className='gridItem' onClick={() => {
-                            navigate("/portugal")
+                            navigate("/kenya")
                         }}>
-                            <p className='imgText'>Portugal</p>
+                            <p className='imgText'>Kenya</p>
+                            <img className='img' src={kenya} />
+
+                        </div>
+                    </Roll>
+                    <Roll left>
+                        <div className='gridItem' onClick={() => {
+                            navigate("/america")
+                        }}>
+                            <p className='imgText'>America</p>
+                            <img className='img' src={usa} />
+
+                        </div>
+                    </Roll>
+                    <Roll left>
+                        <div className='gridItem' onClick={() => {
+                            navigate("/america")
+                        }}>
+                            <p className='imgText'>America</p>
                             <img className='img' src={portuguese} />
 
                         </div>
                     </Roll>
                     <Roll left>
                         <div className='gridItem' onClick={() => {
-                            navigate("/portugal")
+                            navigate("/america")
                         }}>
-                            <p className='imgText'>Portugal</p>
+                            <p className='imgText'>America</p>
                             <img className='img' src={portuguese} />
 
                         </div>

@@ -15,7 +15,10 @@ const NewZealand = () => {
   const [year, setYear] = useState("");
   const [taxResults, setTaxResults] = useState(null);
   const [expenses, setExpenses] = useState("")
+  const todo = () =>{
+    navigate('/');
 
+  }
   const submitPost = () => {
     var data = JSON.stringify({
       "income": income,
@@ -50,7 +53,7 @@ const NewZealand = () => {
     <div className='body'>
       <div className='container'>
           <div className='uploadPost'>
-            <h4>Pay Period</h4>
+            <h4  className='rs'>Pay Period</h4>
             <div class="form__group">
             <input type="Radio" name='payPeriod' value='Yearly' onChange={(e) => {
               setpayPeriod(e.target.value);
@@ -105,7 +108,8 @@ const NewZealand = () => {
 
 
             <br />
-            <button onClick={submitPost} >Submit Post</button>
+            <button  className='button-84'  onClick={submitPost} >Calculate</button>
+            <button  className='button-83'  onClick={todo} >return</button>
             <br />
             
             

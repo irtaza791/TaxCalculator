@@ -10,9 +10,11 @@ import Axios from 'axios'
 import { TextField } from '@material-ui/core';
 import { Container } from '@material-ui/core';
 import { Navigate } from 'react-router-dom';
-const Germany = () => {
+const Ireland = () => {
   let navigate = useNavigate();
   const [relation, setRelation] = useState("")
+  const [payPeriod, setPayPeriod] = useState("")
+  const [age, setAge] = useState("")
   const [income, setIncome] = useState("")
   const [year, setYear] = useState("");
   const [taxResults, setTaxResults] = useState(null);
@@ -28,8 +30,10 @@ const Germany = () => {
     var data = JSON.stringify({
       "income": income,
       "relation": relation,
+      "payPeriod":payPeriod,
+      "age": age,
       "year": year,
-      "calculatorCountry":"Germany",
+      "calculatorCountry":"Ireland",
     });
 
 
@@ -58,6 +62,19 @@ const Germany = () => {
     <div className='body'>
       <div className='container'>
           <div className='uploadPost'>
+
+            <br />
+            <div class="form__group">
+            <label>Select Year</label>
+            <br />
+            <input type="number" min="2019" max="2022" step="1" placeholder='2019' onChange={(e) => {
+              setYear(e.target.value);
+            }} />
+            </div>
+            <br />
+
+
+
             <h4 className='rs' >Relationship Status</h4>
             <div class="form__group">
             <input type="Radio" name='relation' value='Married' onChange={(e) => {
@@ -73,24 +90,50 @@ const Germany = () => {
             />
             <label>Single</label>
             </div>
+           
+
             <br />
+          <h4 className='rs'>Pay Period</h4>
+          <div class="form__group">
+            <input type="Radio" name='payperiod' value='Hourly' onChange={(e) => { setPayPeriod(e.target.value); }} />
+            <label>Hourly</label>
+          </div>
+          <div class="form__group">
+            <input type="Radio" name='payperiod' value='Daily' onChange={(e) => { setPayPeriod(e.target.value); }} />
+            <label>Daily</label>
+          </div>
+          <div class="form__group">
+            <input type="Radio" name='payperiod' value='Monthly' onChange={(e) => { setPayPeriod(e.target.value); }} />
+            <label>Monthly</label>
+          </div>
+          <div class="form__group">
+            <input type="Radio" name='payperiod' value='Yearly' onChange={(e) => { setPayPeriod(e.target.value); }} />
+            <label>Yearly</label>
+          </div>
+          <br />
+
+
+          <br />
             <div class="form__group">
             <label>Gross Income</label>
             <br />
-            <input type="text" onChange={(e) => {
+            <input type="number" onChange={(e) => {
               setIncome(e.target.value);
             }}
             />
             </div>
+
+
             <br />
             <div class="form__group">
-            <label>Select Year</label>
+            <label>Age (IN Years)</label>
             <br />
-            <input type="number" min="2019" max="2022" step="1" placeholder='2019' onChange={(e) => {
-              setYear(e.target.value);
-            }} />
+            <input type="number" onChange={(e) => {
+              setAge(e.target.value);
+            }}
+            />
             </div>
-            <br />
+            
             
             <br />
             <button className='button-84' onClick={submitPost} >Calculate</button>
@@ -108,4 +151,4 @@ const Germany = () => {
   )
 }
 
-export default Germany
+export default Ireland
